@@ -15,6 +15,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "docker-build": "docker build -f ./Dockerfile.dev -t codebook .",
+    "docker-run": "docker run --rm -p 3000:3000 -v $(pwd):/app codebook",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

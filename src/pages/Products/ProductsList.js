@@ -1,20 +1,23 @@
 import { useState, useEffect } from 'react';
 import { ProductCard} from '../../components';
 import { FilterBar } from './components/FilterBar';
+import { useLocation } from 'react-router-dom';
 
 export const ProductsList = () => {
 
   const [ show, setShow ] = useState(false);
   const [ products, setProducts ] = useState([]);
+  const search = useLocation().search;
+  const searchTerm = new URLSearchParams(search).get("q");
 
   useEffect(() => {
     async function fetchProducts(){
-      const response = await fetch('http://localhost:8000/products');
-      const data = await response.json();
+      const response = await fetch(`http://localhost:8000/products?name_like=${ searchTerm ? searchTerm : ""}`);
+      const data = await response.json()
       setProducts(data);
     }
     fetchProducts();
-  })
+  }, [ searchTerm ]);
 
   return (
     <main>

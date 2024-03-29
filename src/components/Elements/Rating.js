@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rating = ({rating}) => {
+export const Rating = ({rating}) => {
 
   let ratingArray = Array(5).fill(false);
   
@@ -21,6 +21,4 @@ const Rating = ({rating}) => {
     }  
     </>
   );
-}
-
-export default Rating;
+};

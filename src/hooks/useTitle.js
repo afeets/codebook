@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-export const UseTitle = (title) => {
+export const useTitle = (title) => {
   
   useEffect(() => {
-    document.title = `${title} - CodeBook`;
+    document.title = `${title} | CodeBook`;
   }, [ title]);
 
   return null;

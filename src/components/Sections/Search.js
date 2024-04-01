@@ -9,7 +9,6 @@ export const Search = ({setShowSearch}) => {
   const handleSearch = (event) => {
     event.preventDefault();
     setShowSearch(false); // hide search form
-    console.log(searchRef.current.value);
     navigate(`/products?q=${searchRef.current.value}`);
   }
 

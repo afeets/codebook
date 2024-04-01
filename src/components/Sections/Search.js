@@ -1,14 +1,15 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Search = ({setSearch}) => {
+export const Search = ({setShowSearch}) => {
   
   const navigate = useNavigate();
   const searchRef = useRef();
 
   const handleSearch = (event) => {
     event.preventDefault();
-    setSearch(false); // hide search form
+    setShowSearch(false); // hide search form
+    console.log(searchRef.current.value);
     navigate(`/products?q=${searchRef.current.value}`);
   }
 

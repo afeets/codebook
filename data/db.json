@@ -244,6 +244,18 @@
       "password": "$2a$10$bhNE2iSe0lKfHbXK3yaMg.L5H/h8tp0A0KR3JTTh6owjEPjegPAhW",
       "name": "Andrew Feetenby",
       "id": 1
+    },
+    {
+      "email": "joe.bloggs@icr.co.th",
+      "password": "$2a$10$GRquldmI5//1YoWpUntqKeLXfMzOskekvtVaTG4lj.F1WnSej9emu",
+      "name": "Joe Bloggs",
+      "id": 2
+    },
+    {
+      "email": "fred.bloggs@icr.co.th",
+      "password": "$2a$10$Vq/fyC0efHqwUAAVQ1ZPG.XSN3pGjYqcK24Gj6x/oxO5Nfqvi68ru",
+      "name": "Fred Bloggs",
+      "id": 3
     }
   ]
 }

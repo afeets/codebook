@@ -9,6 +9,9 @@ export const Header = () => {
   const [ darkMode, setDarkMode ] = useState(JSON.parse(localStorage.getItem("darkMode")) || false);
   const [ showSearch, setShowSearch ] = useState(false);
   const [ dropdown, setDropdown ] = useState(false);
+  
+  // check session storage for access token
+  const token = JSON.parse(sessionStorage.getItem("token"));
 
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
@@ -38,7 +41,8 @@ export const Header = () => {
                     </span>                    
                   </Link>
                   <span onClick={() => setDropdown(!dropdown)} className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
-                  { dropdown && <DropdownLoggedOut />}
+                  {/* if token exists show LoggedIn Dropdown */}
+                  { dropdown && ( token ? <DropdownLoggedIn setDropdown={setDropdown} /> : <DropdownLoggedOut setDropdown={setDropdown} /> )}
               </div>
           </div>
       </nav>

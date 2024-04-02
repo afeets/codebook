@@ -25,7 +25,6 @@ export const Register = () => {
 
     const data = await response.json();
     data.accessToken ? navigate("/products") : toast.error(data);
-    console.log(data);
   }
 
   return (

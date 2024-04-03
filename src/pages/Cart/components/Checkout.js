@@ -43,16 +43,19 @@ export const Checkout = ({ setCheckout }) => {
       }
     }
 
-    const response = await fetch("http://localhost:8000/660/orders", {
-      method: "POST",
-      headers: {"Content-Type": "application/json", Authorization: `Bearer ${token}`},
-      body: JSON.stringify(order)
-    });
-    
-    const data = await response.json();
-    clearCart();
-    navigate("/");
-
+    try {
+      const response = await fetch("http://localhost:8000/660/orders", {
+        method: "POST",
+        headers: {"Content-Type": "application/json", Authorization: `Bearer ${token}`},
+        body: JSON.stringify(order)
+      });
+      
+      const data = await response.json();
+      clearCart();
+      navigate("/order-summary", { state: { data: data, status: true } });
+    } catch(error) {
+      navigate("/order-summary", { state: { status: false } });
+    }
   }
 
   return (

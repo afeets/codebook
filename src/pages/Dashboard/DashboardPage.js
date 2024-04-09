@@ -1,9 +1,19 @@
 import { DashboardEmpty } from './components/DashboardEmpty'; 
 import { DashboardCard } from './components/DashboardCard'; 
+import { useEffect, useState } from 'react';
+import { getUserOrders } from '../../services';
 export const DashboardPage = () => {
   
-  const orders = [];
-  
+  const [ orders, setOrders ] = useState([]);
+
+  useEffect(() => {
+    async function fetchOrders(){
+      const data = await getUserOrders();
+      setOrders(data);
+    }
+    fetchOrders();
+  },[]);
+
   return (
     <main>
       <section>

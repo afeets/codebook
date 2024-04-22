@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom"
 import { getUser, logout } from '../../services';
 import { useEffect, useState } from "react";
@@ -9,11 +10,21 @@ export const DropdownLoggedIn = ({ setDropdown }) => {
 
     useEffect(() => {
         async function fetchData(){
-            const data = await getUser();
-            data.email ? setUser(data) : handleLogout();
+            try {
+                const data = await getUser();
+                data.email ? setUser(data) : handleLogout();
+            }
+            catch (error){
+                toast.error(error.message, { 
+                    position: "bottom-center",
+                    closeButton: true,
+                    closeOnClick: true,
+                    autoClose: 5000,
+                  }); 
+            }
         }
         fetchData();
-    });
+    },[]);
 
     function handleLogout(){
         logout();

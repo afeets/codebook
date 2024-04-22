@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { ProductCard } from "../../../components/Elements/ProductCard";
 import { getFeaturedList } from "../../../services";
@@ -7,8 +8,18 @@ export const FeaturedProducts = () => {
 
   useEffect(() => {
     async function fetchProducts(){
-      const data = await getFeaturedList();
-      setProducts(data);
+      try {
+        const data = await getFeaturedList();
+        setProducts(data);
+      }
+      catch (error){
+        toast.error(error.message, { 
+          position: "bottom-center",
+          closeButton: true,
+          closeOnClick: true,
+          autoClose: 5000,
+        });
+      }
     }
     fetchProducts();
   }, [])

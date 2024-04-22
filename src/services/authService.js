@@ -6,6 +6,12 @@ export async function login(authDetail){
   }
 
   const response = await fetch("http://localhost:8000/login", requestOptions);
+  
+  if (!response.ok){
+    const errorMessage = { message: response.statusText, status: response.status };
+    throw errorMessage;
+  }
+
   const data = await response.json();
 
   if (data.accessToken){
@@ -26,6 +32,12 @@ export async function register(authDetail){
 
   // fetch request
   const response = await fetch("http://localhost:8000/register", requestOptions);
+
+  if (!response.ok){
+    const errorMessage = { message: response.statusText, status: response.status };
+    throw errorMessage;
+  }
+
   const data = await response.json();
 
   if (data.accessToken){

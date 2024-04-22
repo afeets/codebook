@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useTitle } from "../hooks/useTitle";
@@ -15,8 +16,18 @@ export const ProductDetail = () => {
 
   useEffect(() => {
     async function fetchProducts(id){
-      const data = await getProduct(id);
-      setProduct(data);
+      try {
+        const data = await getProduct(id);
+        setProduct(data);
+      }
+      catch(error){
+        toast.error(error.message, { 
+          position: "bottom-center",
+          closeButton: true,
+          closeOnClick: true,
+          autoClose: 5000,
+        });
+      }
     }
     fetchProducts([id]);
   },[id]);

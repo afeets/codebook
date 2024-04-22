@@ -13,14 +13,24 @@ export const Login = () => {
 
   async function handleLogin(event){
     event.preventDefault();
-    const authDetail = {
-      email: email.current.value,
-      password: password.current.value
+    // test connection to API
+    try {
+      const authDetail = {
+        email: email.current.value,
+        password: password.current.value
+      }
+      
+      const data = await login(authDetail);
+      data.accessToken ? navigate("/products") : toast.error(data);
     }
-    
-    const data = await login(authDetail);
-    data.accessToken ? navigate("/products") : toast.error(data);
-
+    catch(error){
+      toast.error(error.message, { 
+        position: "bottom-center",
+        closeButton: true,
+        closeOnClick: true,
+        autoClose: 5000,
+      });
+    }
   }
 
   return (

@@ -3,6 +3,8 @@ import { DashboardEmpty } from './components/DashboardEmpty';
 import { DashboardCard } from './components/DashboardCard'; 
 import { useEffect, useState } from 'react';
 import { getUserOrders } from '../../services';
+import { toast } from 'react-toastify';
+
 export const DashboardPage = () => {
   
   const [ orders, setOrders ] = useState([]);
@@ -10,8 +12,18 @@ export const DashboardPage = () => {
   
   useEffect(() => {
     async function fetchOrders(){
-      const data = await getUserOrders();
-      setOrders(data);
+      try {
+        const data = await getUserOrders();
+        setOrders(data);
+      }
+      catch(error){
+        toast.error(error.message, { 
+          position: "bottom-center",
+          closeButton: true,
+          closeOnClick: true,
+          autoClose: 5000,
+        });
+      }
     }
     fetchOrders();
   },[]);
@@ -32,8 +44,6 @@ export const DashboardPage = () => {
       <section>
         { orders.length === 0 && <DashboardEmpty /> }
       </section>
-
-
     </main>
   )
 }

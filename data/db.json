@@ -237,27 +237,13 @@
       "best_seller": true
     }
   ],
-  "orders": [
-    
-  ],
+  "orders": [],
   "users": [
     {
-      "email": "andyfeetenby@gmail.com",
-      "password": "$2a$10$bhNE2iSe0lKfHbXK3yaMg.L5H/h8tp0A0KR3JTTh6owjEPjegPAhW",
-      "name": "Andrew Feetenby",
+      "email": "test1@gmail.com",
+      "password": "$2a$10$k3KlPSavswDhxoW/f5bvTOfWUDMnkZb2Afyi4DwuAg3Shn.IFXO/q",
+      "name": "test1",
       "id": 1
-    },
-    {
-      "email": "joe.bloggs@icr.co.th",
-      "password": "$2a$10$GRquldmI5//1YoWpUntqKeLXfMzOskekvtVaTG4lj.F1WnSej9emu",
-      "name": "Joe Bloggs",
-      "id": 2
-    },
-    {
-      "email": "fred.bloggs@icr.co.th",
-      "password": "$2a$10$Vq/fyC0efHqwUAAVQ1ZPG.XSN3pGjYqcK24Gj6x/oxO5Nfqvi68ru",
-      "name": "Fred Bloggs",
-      "id": 3
     }
   ]
 }

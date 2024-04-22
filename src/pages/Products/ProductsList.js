@@ -1,3 +1,4 @@
+import { useTitle } from "../../hooks/useTitle";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ProductCard } from "../../components/Elements/ProductCard";
@@ -6,6 +7,7 @@ import { useFilter } from "../../context/FilterContext";
 import { getProductList } from "../../services";
 
 export const ProductsList = () => {
+  useTitle("Product List");
   const { products, initialProductList } = useFilter();
   const [showFilter, setShowFilter ] = useState(false);
   const search = useLocation().search;
@@ -17,7 +19,7 @@ export const ProductsList = () => {
       initialProductList(data);
     }
     fetchProducts();
-  }, [ searchTerm ]);
+  }, );
 
   return (
     <main>

@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { login } from  '../services';
 import { toast } from 'react-toastify';
 
+import { useTitle } from "../hooks/useTitle";
+
 export const Login = () => {
+  useTitle("Login");
   const navigate = useNavigate();
   const email = useRef();
   const password = useRef();
